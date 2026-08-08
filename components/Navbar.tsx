@@ -69,13 +69,13 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-60 transition-all duration-500 ${
         scrolled
           ? 'bg-background/70 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.8)] backdrop-blur-xl'
           : 'bg-transparent'
       }`}
     >
-      <div className="flex items-center justify-between px-6 py-4 md:px-12 lg:px-20">
+      <div className="flex items-center justify-between px-6 py-6 md:px-12 lg:px-20">
         {/* Logo */}
         <a
           href="#top"
@@ -155,7 +155,7 @@ export default function Navbar() {
 
       {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 bg-background/95 backdrop-blur-2xl transition-all duration-500 md:hidden ${
+        className={`fixed top-0 left-0 right-0 z-50 flex flex-col items-center justify-center gap-8 bg-background/95 backdrop-blur-2xl overflow-y-hidden h-[100svh] transition-all duration-500 md:hidden ${
           open ? 'visible opacity-100' : 'invisible opacity-0'
         }`}
       >
