@@ -80,12 +80,12 @@ const PACKNEST_IMAGES = [
 ]
 
 const TITIKUSAHA_IMAGES = [
-  '/images/titikUsaha/halaman-login.png',
-  '/images/titikUsaha/halaman%20dashboard.png',
-  '/images/titikUsaha/halaman%20searching.png',
-  '/images/titikUsaha/halaman%20analisis.png',
-  '/images/titikUsaha/halaman%20simpan.png',
-  '/images/titikUsaha/halaman%20setting.png',
+  '/images/TitikUsaha/halaman-login.png',
+  '/images/TitikUsaha/halaman%20dashboard.png',
+  '/images/TitikUsaha/halaman%20searching.png',
+  '/images/TitikUsaha/halaman%20analisis.png',
+  '/images/TitikUsaha/halaman%20simpan.png',
+  '/images/TitikUsaha/halaman%20setting.png',
 ]
 
 const VIZZIODOCS_IMAGES = [
