@@ -40,13 +40,32 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Lock body scroll when the mobile menu is open
+  // Lock scrolling while the mobile menu is open. Lenis must be stopped too —
+  // body overflow alone doesn't stop its raf loop. Restarting happens in
+  // navigate() SYNCHRONOUSLY (before goTo), because this effect only runs
+  // AFTER the click handler — scrolling while locked would do nothing.
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
+    if (open) {
+      window.__lenis?.stop()
+      document.body.style.overflow = 'hidden'
+    } else {
+      window.__lenis?.start()
+      document.body.style.overflow = ''
+    }
     return () => {
+      window.__lenis?.start()
       document.body.style.overflow = ''
     }
   }, [open])
+
+  // Close the menu, re-enable Lenis/scroll in the SAME tick, then jump.
+  // This is what makes nav links work from any section on mobile.
+  const navigate = (id: string) => {
+    setOpen(false)
+    window.__lenis?.start()
+    document.body.style.overflow = ''
+    goTo(id)
+  }
 
   return (
     <nav
@@ -62,8 +81,7 @@ export default function Navbar() {
           href="#top"
           onClick={(e) => {
             e.preventDefault()
-            setOpen(false)
-            goTo('top')
+            navigate('top')
           }}
           className="group flex items-center gap-3"
           aria-label="Back to top"
@@ -147,8 +165,7 @@ export default function Navbar() {
             href={`#${link.id}`}
             onClick={(e) => {
               e.preventDefault()
-              setOpen(false)
-              goTo(link.id)
+              navigate(link.id)
             }}
             style={{ transitionDelay: open ? `${i * 70}ms` : '0ms' }}
             className={`text-3xl font-semibold text-text-primary transition-all duration-500 hover:text-secondary ${
@@ -162,8 +179,7 @@ export default function Navbar() {
           href="#contact"
           onClick={(e) => {
             e.preventDefault()
-            setOpen(false)
-            goTo('contact')
+            navigate('contact')
           }}
           style={{ transitionDelay: open ? `${links.length * 70}ms` : '0ms' }}
           className={`mt-4 rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-lg shadow-primary/40 transition-all duration-500 ${
