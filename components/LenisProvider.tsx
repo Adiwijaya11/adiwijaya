@@ -30,10 +30,10 @@ export default function LenisProvider({
     gsap.ticker.lagSmoothing(0)
 
     // Expose for cross-component navigation (Navbar scrollTo sections)
-    ;(window as any).__lenis = lenis
+    window.__lenis = lenis
 
     return () => {
-      if ((window as any).__lenis === lenis) delete (window as any).__lenis
+      if (window.__lenis === lenis) delete window.__lenis
       lenis.destroy()
       gsap.ticker.lagSmoothing(0) // reset to default
     }

@@ -110,8 +110,8 @@ export default function TechnologyStack({ overlay }: { overlay?: React.ReactNode
       )
 
       function publishContact(st: ScrollTrigger) {
-        ;(window as any).__portfolioScroll = {
-          ...((window as any).__portfolioScroll || {}),
+        window.__portfolioScroll = {
+          ...(window.__portfolioScroll || {}),
           contact: st.end,
         }
       }

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -193,12 +194,15 @@ function ShowcaseCard({
           style={{ transform: `translate3d(${-index * 100}%,0,0)` }}
         >
           {slides.map((src) => (
-            <img
+            <Image
               key={src}
               src={src}
               alt={`${name} screenshot ${index + 1}`}
               className="h-full w-full flex-none object-cover object-top"
               draggable={false}
+              unoptimized
+              width={800}
+              height={450}
             />
           ))}
         </div>
@@ -330,11 +334,14 @@ function PhoneCard({
               style={{ transform: `translate3d(${-index * 100}%,0,0)` }}
             >
               {images.map((src) => (
-                <img
+                <Image
                   key={src}
                   src={src}
                   alt={`${name} layar ${images.indexOf(src) + 1}`}
                   draggable={false}
+                  unoptimized
+                  width={498}
+                  height={942}
                   className="h-full w-full flex-none object-cover object-top"
                 />
               ))}
@@ -498,7 +505,7 @@ export default function PortfolioFlow({
           const el = document.getElementById(id)
           return el ? el.getBoundingClientRect().top + window.scrollY : st.end
         }
-        ;(window as any).__portfolioScroll = {
+        window.__portfolioScroll = {
           about: st.start + coverH(), // About selesai nutup Hero
           projects: st.start + 2 * coverH(), // Projects#1 full
           technology: doc('technology'),
