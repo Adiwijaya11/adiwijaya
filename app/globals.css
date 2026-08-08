@@ -1,26 +1,91 @@
+/* app/globals.css */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
+  --color-background: #0b0b0f;
+  --color-surface: #111118;
+  --color-primary: #7c5cff;
+  --color-secondary: #00d4ff;
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #a1a1aa;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  overflow-x: hidden;
+  background-color: #0b0b0f;
+  color: #f5f5f7;
+}
+
+::selection {
+  background-color: #7c5cff;
+  color: white;
+}
+
+/* Hide scrollbar UI everywhere — panels must look like one clean screen */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+*::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.section-padding {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+/* Global Backgrounds */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(124, 92, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.1;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTSAwIDQwIEwgNDAgMCBMIDQwIDQwIFoiIHN0cm9rZT0iIzExMTExOCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48cGF0aCBkPSJNIDQwIDQwIEwgNDAgMjAgTCAyMCA0MCBaIiBzdHJva2U9IiMxMTExMTgiIHN0cm9rZS13aWR0aD0iMC4yIi8+PC9zdmc+');
+  background-size: 40px 40px;
+  animation: noise 8s infinite alternate;
+}
+
+@keyframes noise {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-15%, 15%); }
+  50% { transform: translate(-5%, 5%); }
+  60% { transform: translate(10%, -5%); }
+  70% { transform: translate(15%, 0%); }
+  80% { transform: translate(-10%, -10%); }
+  90% { transform: translate(5%, 10%); }
+  100% { transform: translate(0, 0); }
 }
