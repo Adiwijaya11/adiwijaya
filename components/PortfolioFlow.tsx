@@ -316,9 +316,8 @@ function PhoneCard({
         <div
           className="relative flex-none rounded-[2.8rem] bg-neutral-900 p-1.5 shadow-2xl shadow-black/60 ring-1 ring-white/10 sm:rounded-[3.2rem] sm:p-2"
           style={{
-            // Phone scales with viewport height so copy + phone + dots always
-            // fit inside 100svh — bigger on monitors, never cramped on phones.
-            width: 'clamp(150px, min(52vw, calc((100svh - 360px) * 0.62)), 440px)',
+            // Adjusted width for better mobile responsiveness
+            width: 'clamp(120px, 80vw, 260px)',
             boxShadow: `0 0 0 1px rgba(0,0,0,.6), 0 24px 60px -12px rgba(0,0,0,.7), 0 0 60px ${accent}22`,
           }}
         >
@@ -571,7 +570,7 @@ export default function PortfolioFlow({
                 <span className="h-px w-8 bg-white/40" />
                 Projects
               </p>
-              <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl 2xl:text-6xl">
+                              <h2 className="mt-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center font-bold leading-tight tracking-tight text-white">
                 <span className="block overflow-hidden">
                   <span className="project-line block">
                     Karya yang pernah
@@ -596,7 +595,7 @@ export default function PortfolioFlow({
           return (
             <section
               key={project.name}
-              className="project-panel relative flex h-full w-full flex-none overflow-hidden"
+              className="project-panel relative flex h-full w-full flex-none flex-col lg:flex-row overflow-hidden"
               style={{ backgroundColor: panelStyles[panelIndex % 6].bg }}
             >
               <div
@@ -612,7 +611,7 @@ export default function PortfolioFlow({
               <div className="relative m-auto flex h-full w-full max-w-7xl overflow-hidden px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-10 lg:px-16 2xl:max-w-[90rem] 2xl:px-24">
                 <header className="projects-header flex h-full w-full flex-col justify-center">
                   <div className="flex h-full max-h-full flex-col justify-center gap-4 overflow-hidden lg:flex-row lg:items-center lg:gap-10 lg:overflow-visible">
-                    <div className={['Resepan Dapur', 'Vizzio Stream', 'VizzioDocs'].includes(project.name) ? 'shrink-0 py-2 lg:w-[37%]' : project.name === 'PackNest' ? 'shrink-0 py-2 lg:w-[63%]' : project.name === 'TitikUsaha' ? 'shrink-0 py-2 lg:w-[55%]' : 'mx-auto max-w-2xl py-2 text-center lg:py-0'}>
+                    <div className={['Resepan Dapur', 'Vizzio Stream', 'VizzioDocs'].includes(project.name) ? 'shrink-0 py-2 lg:w-[37%]' : project.name === 'PackNest' ? 'shrink-0 py-2 w-full lg:w-[63%]' : project.name === 'TitikUsaha' ? 'shrink-0 py-2 w-full lg:w-[55%]' : 'mx-auto max-w-2xl py-2 text-center lg:py-0'}>
                       <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-white/60 md:text-sm 2xl:text-base">
                         <span className="h-px w-8 bg-white/40" />
                         {String(panelIndex).padStart(2, '0')} — {project.type}
