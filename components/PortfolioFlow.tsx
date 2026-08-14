@@ -507,6 +507,7 @@ export default function PortfolioFlow({
         window.__portfolioScroll = {
           about: st.start + coverH(), // About selesai nutup Hero
           projects: st.start + 2 * coverH(), // Projects#1 full
+          awards: doc('awards'),
           technology: doc('technology'),
           contact: doc('contact'),
         }
@@ -564,13 +565,14 @@ export default function PortfolioFlow({
               background: `radial-gradient(circle at 70% 20%, ${panelStyles[0].glow}26 0%, transparent 55%)`,
             }}
           />
-          <div className="relative m-auto flex h-full w-full max-w-7xl overflow-hidden px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-10 lg:px-16 2xl:max-w-[90rem] 2xl:px-24">
-            <header className="projects-header flex h-full w-full flex-col justify-center">
-              <p className="flex items-center gap-2 font-mono text-sm uppercase tracking-[0.3em] text-white/60">
+          <div className="relative m-auto flex h-full w-full max-w-7xl items-center justify-center px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-10 lg:px-16 2xl:max-w-[90rem] 2xl:px-24">
+            <header className="projects-header flex h-full w-full flex-col items-center justify-center text-center">
+              <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-white/60 sm:text-sm">
                 <span className="h-px w-8 bg-white/40" />
                 Projects
+                <span className="h-px w-8 bg-white/40" />
               </p>
-                              <h2 className="mt-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center font-bold leading-tight tracking-tight text-white">
+              <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-white sm:mt-6 sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl">
                 <span className="block overflow-hidden">
                   <span className="project-line block">
                     Karya yang pernah
@@ -582,10 +584,13 @@ export default function PortfolioFlow({
                   </span>
                 </span>
               </h2>
-              <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/60 md:text-base 2xl:text-lg">
-                Geser untuk menjelajah — setiap layar adalah satu
-                proyek, dari website hingga aplikasi mobile.
+              <p className="mt-4 max-w-xl text-center text-sm leading-relaxed text-white/70 sm:mt-6 sm:text-base md:text-lg 2xl:text-xl">
+                Geser untuk menjelajah — setiap layar adalah satu proyek, dari website hingga aplikasi mobile.
               </p>
+              <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs uppercase tracking-widest text-white/60 backdrop-blur">
+                <span>Geser ke kanan</span>
+                <span className="animate-pulse text-sm">→</span>
+              </div>
             </header>
           </div>
         </section>

@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import PortfolioFlow from '@/components/PortfolioFlow'
 import HeroSection from '@/components/HeroSection'
 import AboutSection from '@/components/AboutSection'
+import AwardsSection from '@/components/AwardsSection'
 import TechnologyStack from '@/components/TechnologyStack'
 import Contact from '@/components/Contact'
 
@@ -13,6 +14,7 @@ export default function Home() {
         hero={<HeroSection />}
         about={<AboutSection />}
       />
+      <AwardsSection />
       <TechnologyStack overlay={<Contact />} />
     </main>
   )
