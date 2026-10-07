@@ -13,6 +13,10 @@ const links = [
 // Jump to a published portfolio stage (AboutSection / PortfolioFlow / Contact).
 // Fallback: native anchor scroll if lenis or the offsets aren't ready yet.
 function goTo(id: string) {
+  if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+    window.location.href = id === 'top' ? '/' : `/#${id}`
+    return
+  }
   const lenis = window.__lenis
   const offsets = window.__portfolioScroll
   if (id === 'top') {
